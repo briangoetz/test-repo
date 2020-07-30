@@ -3,10 +3,14 @@ OUTPUT = out
 CSSDIR  = $(OUTPUT)/css
 CSSFILE = $(CSSDIR)/main.css
 
-all: init clean $(OUTPUT) $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(wildcard *.md))))
+IN_FILES = $(wildcard *.md **/*.md)
+OUT_FILES = $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(IN_FILES) )))
+
+all: $(OUTPUT) $(OUT_FILES)
+	echo $(FILES)
 
 $(OUTPUT)/%.html: %.md
-	cp $< $@
+	pandoc -f markdown $< -o $@
 
 $(OUTPUT):
 	mkdir $(OUTPUT)
@@ -14,4 +18,4 @@ $(OUTPUT):
 clean:
 	rm -rf $(OUTPUT)
 
-.PHONY: init clean
+.PHONY: all clean
