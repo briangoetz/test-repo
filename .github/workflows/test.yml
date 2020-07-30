@@ -1,10 +1,13 @@
-name: Greet
+name: Make
 on: [workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: echo
+      - name: checkout
+        uses: actions/github-checkout@v2
+        
+      - name: make
         run: make
 
