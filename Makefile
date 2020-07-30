@@ -1,15 +1,16 @@
 OUTPUT = out
+INPUT = site
 
 CSSDIR  = $(OUTPUT)/css
 CSSFILE = $(CSSDIR)/main.css
 
-IN_FILES = $(wildcard *.md **/*.md)
-OUT_FILES = $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(IN_FILES) )))
+IN_FILES = $(wildcard $(INPUT)/**/*.md)
+OUT_FILES = $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(IN_FILES:$(INPUT)/%=%) )))
 
 all: $(OUTPUT) $(OUT_FILES)
 	echo $(FILES)
 
-$(OUTPUT)/%.html: %.md
+$(OUTPUT)/%.html: $(INPUT)/%.md
 	pandoc -f markdown $< -o $@
 
 $(OUTPUT):
