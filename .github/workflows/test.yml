@@ -7,9 +7,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-        
+
+      - name: install-pandoc
+        run: sudo apt install pandoc -y --no-install-recommends
+
       - name: make
-        uses: docker://pandoc/core:2.9
         run: make
 
       - name: publish
