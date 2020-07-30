@@ -4,7 +4,7 @@ INPUT = site
 CSSDIR  = $(OUTPUT)/css
 CSSFILE = $(CSSDIR)/main.css
 
-IN_FILES = $(wildcard $(INPUT)/**/*.md)
+IN_FILES = $(wildcard $(INPUT)/*.md $(INPUT)/**/*.md)
 OUT_FILES = $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(IN_FILES:$(INPUT)/%=%) )))
 
 all: $(OUTPUT) $(OUT_FILES)
