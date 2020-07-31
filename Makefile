@@ -1,8 +1,5 @@
-OUTPUT = out
 INPUT = site
-
-CSSDIR  = $(OUTPUT)/css
-CSSFILE = $(CSSDIR)/main.css
+OUTPUT = out
 
 IN_FILES = $(wildcard $(INPUT)/*.md $(INPUT)/**/*.md)
 OUT_FILES = $(addprefix $(OUTPUT)/, $(addsuffix .html, $(basename $(IN_FILES:$(INPUT)/%=%) )))
