@@ -34,6 +34,3 @@ jobs:
           asset_path: ./site.tar.gz
           asset_name: site.tar.gz
           asset_content_type: application/x-zip
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
