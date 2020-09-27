@@ -1,6 +1,7 @@
 OUT_DIR = out
 IN_DIR = site
 CSS = style.css
+TARBALL = site.tar.gz
 
 WILDCARD = $(patsubst $(IN_DIR)/%, %, $(wildcard $(IN_DIR)/*.$(1) $(IN_DIR)/**/*.$(1) ))
 
