@@ -1,4 +1,4 @@
-OUT_DIR = web
+OUT_DIR = out
 IN_DIR = site
 CSS = style.css
 
