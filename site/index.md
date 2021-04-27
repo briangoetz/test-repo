@@ -1,3 +1,3 @@
 ## Site
 
-![](https://github.com/briangoetz/test-repo/workflows/Publish/badge.svg)
+This is the `index.md` file.  See also: [content](content.html).
