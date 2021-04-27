@@ -1,4 +1,4 @@
-name: Make
+name: Publish
 on: [push, workflow_dispatch]
 
 jobs:
@@ -12,25 +12,10 @@ jobs:
         run: sudo apt install pandoc -y --no-install-recommends
 
       - name: make
-        run: make site
+        run: make
 
-      - name: create-release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: publish
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          tag_name: site-${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          draft: false
-          prerelease: true
-
-      - name: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./site.tar.gz
-          asset_name: site.tar.gz
-          asset_content_type: application/x-zip
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
